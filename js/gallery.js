@@ -92,9 +92,8 @@ gallery.addEventListener("click", (event) => {
     return;
   }
 
-  const searchClicked = event.target.alt;
   const { original, description } = images.find(
-    (image) => image.description === searchClicked
+    (image) => image.description === event.target.alt
   );
 
   basicLightbox
