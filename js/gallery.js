@@ -88,19 +88,13 @@ function makeGalleryMarkup(image) {
 
 gallery.addEventListener("click", (event) => {
   event.preventDefault();
-  if (event.target === event.currentTarget) {
-    return;
-  }
-
-  const { original, description } = images.find(
-    (image) => image.description === event.target.alt
-  );
-
-  basicLightbox
-    .create(
-      `<div class="modal">
-        <img src="${original}" alt="${description}">
+  if (event.target.tagName === "IMG") {
+    basicLightbox
+      .create(
+        `<div class="modal">
+          <img src="${event.target.dataset.source}" alt="${event.target.alt}">
         </div>`
-    )
-    .show();
+      )
+      .show();
+  }
 });
